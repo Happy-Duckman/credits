@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "happy-mario"
-permalink: /credits/gravity
+permalink: /credits
 ---
 <!DOCTYPE html>
 <html lang="en">
