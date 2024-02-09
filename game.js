@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
         rock.className = 'rock';
         rock.style.left = Math.random() * (gameContainer.offsetWidth - 50) + 'px';
         rock.style.zIndex = zIndexCounter++;
+        console.log('Created rock with zIndex:', rock.style.zIndex);
         
         rock.addEventListener('click', function () {
             stackRock(rock);
