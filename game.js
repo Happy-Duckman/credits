@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
     const gameContainer = document.getElementById('game-container');
+    let zIndexCounter = 1;
 
     function createRock() {
         const rock = document.createElement('div');
         rock.className = 'rock';
         rock.style.left = Math.random() * (gameContainer.offsetWidth - 50) + 'px';
-
+        rock.style.zIndex = zIndexCounter++;
+        
         rock.addEventListener('click', function () {
             stackRock(rock);
         });
@@ -29,6 +31,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function resetGame() {
         gameContainer.innerHTML = '';
+        zIndexCounter = 1; // Reset the zIndex counter
+        // Create initial rocks
+        for (let i = 0; i < 4; i++) {
+            createRock();
+        }
     }
 
     // Create initial rocks
@@ -36,4 +43,3 @@ document.addEventListener('DOMContentLoaded', function () {
         createRock();
     }
 });
-
