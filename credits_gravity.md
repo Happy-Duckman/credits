@@ -3,7 +3,6 @@ layout: page
 title: "happy-mario"
 permalink: /credits
 ---
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
