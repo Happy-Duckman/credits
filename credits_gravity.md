@@ -15,4 +15,3 @@ permalink: /credits
     </div>
     <script src="game.js"></script>
 </body>
-</html>
