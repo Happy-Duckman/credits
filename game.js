@@ -72,14 +72,14 @@ document.addEventListener('DOMContentLoaded', function () {
     function isCollision(rock1, rock2) {
         const rect1 = rock1.getBoundingClientRect();
         const rect2 = rock2.getBoundingClientRect();
-
+    
         return (
             rect1.left < rect2.right &&
             rect1.right > rect2.left &&
             rect1.top < rect2.bottom &&
             rect1.bottom > rect2.top
         );
-    }
+    }    
 
     function resetGame() {
         gameContainer.innerHTML = '';
