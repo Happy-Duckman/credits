@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         gameContainer.appendChild(rock);
+        applyGravity(rock);
     }
 
     function startDragging(event, element) {
@@ -39,47 +40,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function applyGravity(rock) {
-        const rocksBelow = getRocksBelow(rock);
-
-        if (rocksBelow.length === 0) {
-            // No rocks below, let it fall to the bottom
-            const bottomPosition = gameContainer.offsetHeight - rock.offsetHeight;
-            rock.style.top = `${bottomPosition}px`;
-        } else {
-            // There are rocks below, stack on top of the highest one
-            const highestRock = rocksBelow.reduce((prev, curr) => {
-                return (curr.offsetTop < prev.offsetTop) ? curr : prev;
-            });
-
-            const newTop = highestRock.offsetTop - rock.offsetHeight;
-            rock.style.top = `${newTop}px`;
-        }
+        const bottomPosition = gameContainer.offsetHeight - rock.offsetHeight;
+        rock.style.top = `${bottomPosition}px`;
     }
-
-    function getRocksBelow(rock) {
-        const rocks = document.querySelectorAll('.rock');
-        const rocksBelow = [];
-
-        rocks.forEach(otherRock => {
-            if (otherRock !== rock && isCollision(rock, otherRock)) {
-                rocksBelow.push(otherRock);
-            }
-        });
-
-        return rocksBelow;
-    }
-
-    function isCollision(rock1, rock2) {
-        const rect1 = rock1.getBoundingClientRect();
-        const rect2 = rock2.getBoundingClientRect();
-    
-        return (
-            rect1.left < rect2.right &&
-            rect1.right > rect2.left &&
-            rect1.top < rect2.bottom &&
-            rect1.bottom > rect2.top
-        );
-    }    
 
     function resetGame() {
         gameContainer.innerHTML = '';
