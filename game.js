@@ -44,11 +44,8 @@ document.addEventListener('DOMContentLoaded', function () {
         if (!topRock || rock.offsetTop + rock.offsetHeight === topRock.offsetTop) {
             const newTop = topRock ? topRock.offsetTop - rock.offsetHeight : gameContainer.offsetHeight - rock.offsetHeight;
             rock.style.top = newTop + 'px';
-        } else {
-            // Game over logic, e.g., reset the game
-            alert('Game Over! Rocks are not stacked.');
-            resetGame();
         }
+
     }
 
     function resetGame() {
