@@ -42,5 +42,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Create initial rocks
     for (let i = 0; i < 4; i++) {
         createRock();
+        stackRock();
     }
 });
