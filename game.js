@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(() => {
             applyGravity(rock);
             checkCollisions(rock);
-        }, 1000 / 40); // 10 frames per second
+        });
     }
 
     function checkCollisions(currentRock) {
