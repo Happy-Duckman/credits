@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         gameContainer.appendChild(rock);
+        applyGravity(rock);
     }
 
     function startDragging(event, element) {
@@ -30,10 +31,21 @@ document.addEventListener('DOMContentLoaded', function () {
         function stopDragging() {
             document.removeEventListener('mousemove', moveElement);
             document.removeEventListener('mouseup', stopDragging);
+
+            applyGravity(element);
         }
 
         document.addEventListener('mousemove', moveElement);
         document.addEventListener('mouseup', stopDragging);
+    }
+
+    function applyGravity(rock) {
+        const bottomPosition = gameContainer.offsetHeight - rock.offsetHeight;
+        rock.style.top = `${bottomPosition}px`;
+
+        // Simulate gravity by updating rock position over time (e.g., using a timeout or interval)
+        // Uncomment the following line if you want a gradual fall
+        // setTimeout(() => applyGravity(rock), 1000 / 60); // 60 frames per second
     }
 
     function resetGame() {
