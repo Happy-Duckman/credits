@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         gameContainer.appendChild(rock);
+        applyGravity(rock);
     }
 
     function startDragging(event, element) {
@@ -46,6 +47,12 @@ document.addEventListener('DOMContentLoaded', function () {
     function applyGravity(rock) {
         const bottomPosition = gameContainer.offsetHeight - rock.offsetHeight;
         rock.style.top = `${bottomPosition}px`;
+
+        // Simulate gravity by updating rock position over time with a delay
+        setTimeout(() => {
+            applyGravity(rock);
+            checkCollisions(rock);
+        }, 1000 / 10); // 10 frames per second
     }
 
     function checkCollisions(currentRock) {
