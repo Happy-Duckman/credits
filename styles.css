@@ -6,8 +6,8 @@
 }
 
 .rock {
-    width: 200px;
-    height: 250px;
+    width: 175px;
+    height: 175px;
     background: url('credits.png') no-repeat center center;
     background-size: cover;
     position: absolute;
