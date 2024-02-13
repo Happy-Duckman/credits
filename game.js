@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         gameContainer.appendChild(rock);
-        applyGravity(rock);
     }
 
     function startDragging(event, element) {
@@ -31,41 +30,10 @@ document.addEventListener('DOMContentLoaded', function () {
         function stopDragging() {
             document.removeEventListener('mousemove', moveElement);
             document.removeEventListener('mouseup', stopDragging);
-
-            applyGravity(element);
-            checkCollisions(element);
         }
 
         document.addEventListener('mousemove', moveElement);
         document.addEventListener('mouseup', stopDragging);
-    }
-
-    function applyGravity(rock) {
-        const bottomPosition = gameContainer.offsetHeight - rock.offsetHeight;
-        rock.style.top = `${bottomPosition}px`;
-    }
-
-    function checkCollisions(rock) {
-        const rocks = document.querySelectorAll('.rock');
-        const rocksBelow = Array.from(rocks).filter(otherRock => isCollision(rock, otherRock));
-
-        if (rocksBelow.length > 0) {
-            const highestRock = rocksBelow.reduce((prev, curr) => (curr.offsetTop < prev.offsetTop) ? curr : prev);
-            const newTop = highestRock.offsetTop - rock.offsetHeight;
-            rock.style.top = `${newTop}px`;
-        }
-    }
-
-    function isCollision(rock1, rock2) {
-        const rect1 = rock1.getBoundingClientRect();
-        const rect2 = rock2.getBoundingClientRect();
-
-        return (
-            rect1.left < rect2.right &&
-            rect1.right > rect2.left &&
-            rect1.top < rect2.bottom &&
-            rect1.bottom > rect2.top
-        );
     }
 
     function resetGame() {
